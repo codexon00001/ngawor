@@ -107,6 +107,6 @@ Tambah alat dan tampilkan daftar:
 
 ![Tambah dan tampilkan](docs/screenshot_tambah_dan_tampilkan.png)
 
-Ubah jumlah, penolakan input, dan alat duplikat:
+Ubah jumlah dari 5 menjadi 13, lalu menjadi 7. Tangkapan CMD juga memperlihatkan prompt saat menjalankan program dan peringatan saat pilihan menu kosong:
 
 ![Ubah jumlah](docs/screenshot_ubah_jumlah.png)
