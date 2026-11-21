@@ -9,7 +9,6 @@
 
 using namespace std;
 
-// Menghapus spasi di awal dan akhir teks.
 string rapikan(const string& teks) {
     size_t awal = teks.find_first_not_of(" \t\r\n");
     if (awal == string::npos) {
@@ -19,14 +18,12 @@ string rapikan(const string& teks) {
     return teks.substr(awal, akhir - awal + 1);
 }
 
-// Mengubah teks menjadi huruf kecil, dipakai untuk membandingkan nama/kategori.
 string kecil(string teks) {
     transform(teks.begin(), teks.end(), teks.begin(),
               [](unsigned char c) { return static_cast<char>(tolower(c)); });
     return teks;
 }
 
-// Membaca satu baris teks. Mengembalikan false jika input sudah habis (EOF).
 bool bacaTeks(const string& label, string& hasil) {
     cout << label;
     if (!getline(cin, hasil)) {
@@ -36,8 +33,6 @@ bool bacaTeks(const string& label, string& hasil) {
     return true;
 }
 
-// Membaca bilangan bulat. Mengembalikan 1 jika berhasil, 0 jika input bukan angka
-// yang valid, dan -1 jika input habis (EOF).
 int bacaAngka(const string& label, int& hasil) {
     string baris;
     if (!bacaTeks(label, baris)) {
@@ -59,8 +54,6 @@ int bacaAngka(const string& label, int& hasil) {
     }
 }
 
-// Aturan alat duplikat: dua alat dianggap sama jika nama DAN kategorinya sama
-// (huruf besar/kecil diabaikan). Mengembalikan indeks alat, atau -1 jika belum ada.
 int cariAlat(const vector<AlatLaboratorium>& daftar, const string& nama, const string& kategori) {
     for (size_t i = 0; i < daftar.size(); i++) {
         if (kecil(daftar[i].getNama()) == kecil(nama) &&
@@ -113,7 +106,6 @@ void menuTambahAlat(vector<AlatLaboratorium>& daftar) {
     cout << "[SUKSES] Alat '" << nama << "' ditambahkan.\n";
 }
 
-// Dipakai bersama oleh menu tambah dan kurangi jumlah.
 void menuUbahJumlah(vector<AlatLaboratorium>& daftar, bool menambah) {
     if (daftar.empty()) {
         cout << "Daftar alat masih kosong. Tambahkan alat terlebih dahulu.\n";
