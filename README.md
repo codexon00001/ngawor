@@ -33,7 +33,7 @@ src/
   AlatLaboratorium.cpp   implementasi method
   main.cpp               koleksi objek (vector) dan menu
 docs/
-  flowchart.png          diagram alur sistem
+  fullsys.png          diagram alur sistem
   class_diagram.png      diagram kelas
   flowchart_*.png        diagram alur per file dan per fungsi
   screenshot_tambah_dan_tampilkan.png
@@ -93,7 +93,7 @@ Program juga dijalankan sekali dengan AddressSanitizer dan UBSan (`-fsanitize=ad
 
 | No. | Diagram | Cakupan |
 |---|---|---|
-| 01 | [Sistem inventaris lengkap](docs/flowchart.png) | Alur dari menu hingga keluar |
+| 01 | [Sistem inventaris lengkap](docs/fullsys.png) | Alur dari menu hingga keluar |
 | 02 | [Alur per file main.cpp](docs/flowchart_main.png) | Pengendali menu dan pemanggilan fungsi |
 | 03 | [Tambah alat dan cari duplikat](docs/flowchart_main_tambah_alat.png) | Validasi data dan pencarian duplikat |
 | 04 | [Tambah dan kurangi jumlah](docs/flowchart_main_ubah_jumlah.png) | Pemilihan alat, perubahan jumlah, dan hasil |
