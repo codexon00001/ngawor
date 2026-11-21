@@ -33,8 +33,9 @@ src/
   AlatLaboratorium.cpp   implementasi method
   main.cpp               koleksi objek (vector) dan menu
 docs/
-  class_diagram.png
-  flowchart.png
+  flowchart.png          diagram alur sistem
+  class_diagram.png      diagram kelas
+  flowchart_*.png        diagram alur per file dan per fungsi
   screenshot_tambah_dan_tampilkan.png
   screenshot_ubah_jumlah.png
 tests/
@@ -89,8 +90,17 @@ Hasil `make test`: 15 dari 15 uji lulus.
 Program juga dijalankan sekali dengan AddressSanitizer dan UBSan (`-fsanitize=address,undefined`) pada skenario tambah, ubah, dan tampilkan, tanpa temuan.
 
 ## Diagram
-- Diagram kelas: `docs/class_diagram.png`
-- Flowchart menu: `docs/flowchart.png`
+
+| No. | Diagram | Cakupan |
+|---|---|---|
+| 01 | [Sistem inventaris lengkap](docs/flowchart.png) | Alur dari menu hingga keluar |
+| 02 | [Alur per file main.cpp](docs/flowchart_main.png) | Pengendali menu dan pemanggilan fungsi |
+| 03 | [Tambah alat dan cari duplikat](docs/flowchart_main_tambah_alat.png) | Validasi data dan pencarian duplikat |
+| 04 | [Tambah dan kurangi jumlah](docs/flowchart_main_ubah_jumlah.png) | Pemilihan alat, perubahan jumlah, dan hasil |
+| 05 | [Tampilkan daftar alat](docs/flowchart_main_tampilkan_daftar.png) | Pengecekan daftar kosong dan perulangan objek |
+| 06 | [Pembacaan dan normalisasi input](docs/flowchart_main_input.png) | Pembacaan, parsing, dan normalisasi teks |
+| 07 | [Alur per file AlatLaboratorium.cpp](docs/flowchart_alat_laboratorium_cpp.png) | Konstruktor, getter, tampilan, dan perubahan jumlah |
+| 08 | [Diagram kelas AlatLaboratorium.hpp](docs/class_diagram.png) | Deklarasi atribut dan antarmuka publik |
 
 ## Screenshot Output
 Tambah alat dan tampilkan daftar:
