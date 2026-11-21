@@ -1,9 +1,7 @@
-### File `Barang.cpp` *(Tugas Mahasiswa 1)*
-
-```cpp
-#include "dandy.hpp"
+#include "Inventaris.hpp"
 #include <iostream>
 #include <iomanip>
+#include <limits>
 
 using namespace std;
 
@@ -32,6 +30,10 @@ double Barang::getHarga() const { return harga; }
 // 4. Method Menambah Stok
 void Barang::tambahStok(int jumlah) {
     if (jumlah > 0) {
+        if (jumlah > numeric_limits<int>::max() - stok) {
+            cout << "[GAGAL] Stok melebihi batas maksimum.\n";
+            return;
+        }
         stok += jumlah;
         cout << "[SUKSES] Stok bertambah " << jumlah << ". Total stok: " << stok << "\n";
     } else {
@@ -62,4 +64,71 @@ void Barang::tampilkanBaris() const {
          << "Rp " << fixed << setprecision(0) << harga << "\n";
 }
 
-```
+
+Barang* Inventaris::temukanBarang(const string& kode) {
+    for (Barang& barang : daftarBarang) {
+        if (barang.getKode() == kode) {
+            return &barang;
+        }
+    }
+    return nullptr;
+}
+
+void Inventaris::tampilkanJudul() const {
+    cout << left << setw(10) << "Kode"
+         << setw(24) << "Nama"
+         << setw(10) << "Stok"
+         << "Harga\n";
+}
+
+void Inventaris::tambahBarang(const Barang& barang) {
+    if (barang.getKode().find_first_not_of(" \t\r") == string::npos) {
+        cout << "[GAGAL] Kode barang harus diisi.\n";
+        return;
+    }
+    if (temukanBarang(barang.getKode()) != nullptr) {
+        cout << "[GAGAL] Kode barang sudah digunakan.\n";
+        return;
+    }
+    daftarBarang.push_back(barang);
+    cout << "[SUKSES] Barang ditambahkan.\n";
+}
+
+void Inventaris::tampilkanSemuaBarang() const {
+    if (daftarBarang.empty()) {
+        cout << "Inventaris masih kosong.\n";
+        return;
+    }
+    tampilkanJudul();
+    for (const Barang& barang : daftarBarang) {
+        barang.tampilkanBaris();
+    }
+}
+
+void Inventaris::cariBarang(const string& kode) {
+    const Barang* barang = temukanBarang(kode);
+    if (barang == nullptr) {
+        cout << "[GAGAL] Barang tidak ditemukan.\n";
+        return;
+    }
+    tampilkanJudul();
+    barang->tampilkanBaris();
+}
+
+void Inventaris::barangMasuk(const string& kode, int jumlah) {
+    Barang* barang = temukanBarang(kode);
+    if (barang == nullptr) {
+        cout << "[GAGAL] Barang tidak ditemukan.\n";
+        return;
+    }
+    barang->tambahStok(jumlah);
+}
+
+void Inventaris::barangKeluar(const string& kode, int jumlah) {
+    Barang* barang = temukanBarang(kode);
+    if (barang == nullptr) {
+        cout << "[GAGAL] Barang tidak ditemukan.\n";
+        return;
+    }
+    barang->kurangiStok(jumlah);
+}

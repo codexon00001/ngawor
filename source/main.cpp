@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <limits>
-#include "dandy.hpp"
+#include "Inventaris.hpp"
 
 using namespace std;
 
@@ -27,6 +27,10 @@ int main() {
         cout << "Pilih menu (0-5): ";
 
         if (!(cin >> pilihan)) {
+            if (cin.eof()) {
+                break;
+            }
+            pilihan = -1;
             cout << "[PERINGATAN] Input harus berupa angka!\n";
             bersihkanInput();
             continue;
