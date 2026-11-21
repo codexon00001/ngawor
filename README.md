@@ -34,7 +34,8 @@ src/
   main.cpp               koleksi objek (vector) dan menu
 docs/
   class_diagram.png
-  flowchart.png
+  flowchart.png          alur menu utama
+  flowchart_detail.png   alur tambah alat, tambah jumlah, kurangi jumlah
   screenshot_tambah_dan_tampilkan.png
   screenshot_ubah_jumlah.png
 tests/
@@ -90,7 +91,8 @@ Program juga dijalankan sekali dengan AddressSanitizer dan UBSan (`-fsanitize=ad
 
 ## Diagram
 - Diagram kelas: `docs/class_diagram.png`
-- Flowchart menu: `docs/flowchart.png`
+- Flowchart menu utama: `docs/flowchart.png`
+- Flowchart proses tambah alat, tambah jumlah, dan kurangi jumlah: `docs/flowchart_detail.png`
 
 ## Screenshot Output
 Tambah alat dan tampilkan daftar:
